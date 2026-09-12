@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Velumen – Datenschutzerklärung</title>
+<meta name="description" content="Datenschutzerklärung für das Spiel Velumen (iOS).">
+<style>
+  :root{ --bg:#050d16; --card:#0a1a2a; --ink:#e6f1f5; --dim:#8fa8b6; --cyan:#5be8d4; --border:rgba(91,232,212,0.18); }
+  *{ box-sizing:border-box; }
+  body{ margin:0; background:var(--bg); color:var(--ink); font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; line-height:1.65; padding:24px 16px 60px; }
+  main{ max-width:720px; margin:0 auto; }
+  h1{ font-size:1.7rem; margin:0 0 4px; }
+  h1 span{ color:var(--cyan); }
+  .tag{ color:var(--dim); margin:0 0 24px; }
+  h2{ font-size:1.05rem; color:var(--cyan); margin:30px 0 8px; }
+  p, li{ color:#cfdde5; }
+  ul{ padding-left:20px; }
+  a{ color:var(--cyan); }
+  nav{ margin-bottom:20px; font-size:0.95rem; }
+  .en{ border-top:1px solid var(--border); margin-top:44px; padding-top:20px; }
+  table{ width:100%; border-collapse:collapse; font-size:0.93rem; }
+  th, td{ text-align:left; padding:8px 10px; border-bottom:1px solid var(--border); vertical-align:top; }
+  th{ color:var(--cyan); font-weight:600; }
+  .wrap{ overflow-x:auto; }
+</style>
+</head>
+<body>
+<main>
+  <nav><a href="index.html">← Support</a> · <a href="#english">English</a></nav>
+  <h1>Datenschutzerklärung <span>Velumen</span></h1>
+  <p class="tag">Stand: September 2026 · Gilt für die iOS-App „Velumen“</p>
+
+  <h2>1. Verantwortlich</h2>
+  <p>Anbieter der App: Kevin Ramel, Schweiz. Kontakt: <a href="mailto:kevinramel190@gmail.com">kevinramel190@gmail.com</a>.</p>
+
+  <h2>2. Kurzfassung</h2>
+  <ul>
+    <li>Velumen braucht <strong>kein Konto</strong>, keine E-Mail-Adresse und keinen echten Namen.</li>
+    <li>Die App enthält <strong>keine Werbung</strong> und <strong>kein Tracking</strong>; es werden keine Werbe-Identifikatoren verwendet und keine Daten an Werbenetzwerke weitergegeben.</li>
+    <li>Dein Spielstand wird <strong>auf deinem Gerät</strong> gespeichert.</li>
+    <li>Für Bestenliste und Cloud-Sync wird eine <strong>anonyme, zufällige Nutzer-ID</strong> verwendet, die keiner Person zugeordnet werden kann.</li>
+  </ul>
+
+  <h2>3. Welche Daten verarbeitet werden</h2>
+  <div class="wrap"><table>
+    <tr><th>Daten</th><th>Zweck</th><th>Wo</th><th>Wie lange</th></tr>
+    <tr><td>Spielstand (Lumen, Skins, Erfolge, Einstellungen, Spielername)</td><td>Das Spiel läuft und merkt sich deinen Fortschritt</td><td>Nur auf deinem Gerät</td><td>Bis du die App löschst</td></tr>
+    <tr><td>Anonyme Nutzer-ID (zufällig erzeugte Zeichenfolge)</td><td>Damit nur du deinen eigenen Bestenlisten-Eintrag ändern kannst</td><td>Firebase Authentication (Google)</td><td>Bis zur Löschung auf Anfrage</td></tr>
+    <tr><td>Bestenlisten-Eintrag: Spielername (frei gewählt), erreichte Tiefe, Zeitpunkt</td><td>Wöchentliche und tägliche Bestenliste anzeigen</td><td>Cloud Firestore (Google), Rechenzentrum Zürich (europe-west6)</td><td>Bestenlisten sind wöchentlich bzw. täglich; abgelaufene Listen werden nicht mehr angezeigt und periodisch gelöscht</td></tr>
+    <tr><td>Cloud-Sync-Code mit Spielstand</td><td>Fortschritt auf ein anderes Gerät übertragen – nur wenn du selbst einen Code erzeugst</td><td>Cloud Firestore (Google), Zürich</td><td>Der Code ist 10 Minuten gültig und danach unbrauchbar; die Einträge werden periodisch gelöscht</td></tr>
+    <tr><td>Kaufinformationen (In-App-Käufe)</td><td>Abwicklung der Lumen-Pakete</td><td>Apple (App Store). Die App erhält von Apple nur die Bestätigung des Kaufs, keine Zahlungsdaten</td><td>Gemäss Apple</td></tr>
+  </table></div>
+  <p>Beim Aufruf der Online-Funktionen übermittelt dein Gerät technisch bedingt seine IP-Adresse an Google (Firebase). Diese wird von Google nur zur Bereitstellung des Dienstes und zur Missbrauchsabwehr verwendet.</p>
+
+  <h2>4. Dienstleister</h2>
+  <ul>
+    <li><strong>Google Ireland Ltd.</strong> (Firebase Authentication, Cloud Firestore) – Speicherort der Spieldaten: Zürich, Schweiz. Datenschutz: <a href="https://firebase.google.com/support/privacy" rel="noopener">firebase.google.com/support/privacy</a></li>
+    <li><strong>Apple Inc.</strong> (App Store, In-App-Käufe, TestFlight) – Datenschutz: <a href="https://www.apple.com/legal/privacy/" rel="noopener">apple.com/legal/privacy</a></li>
+  </ul>
+
+  <h2>5. Rechtsgrundlage</h2>
+  <p>Die Verarbeitung erfolgt zur Erfüllung des Vertrags (Bereitstellung des Spiels und seiner Online-Funktionen) nach Schweizer Datenschutzgesetz (DSG) und, soweit anwendbar, Art. 6 Abs. 1 lit. b DSGVO. Die Nutzung der Online-Funktionen ist freiwillig; das Spiel funktioniert auch ohne Internetverbindung.</p>
+
+  <h2>6. Kinder</h2>
+  <p>Velumen richtet sich nicht gezielt an Kinder unter 13 Jahren und erhebt wissentlich keine personenbezogenen Daten von Kindern. Der Spielername wird von den Spielenden selbst gewählt; bitte keinen echten Namen verwenden.</p>
+
+  <h2>7. Deine Rechte</h2>
+  <p>Du kannst Auskunft über die zu deiner anonymen Nutzer-ID gespeicherten Daten verlangen sowie deren Berichtigung oder Löschung. Da wir dich nicht identifizieren können, nenne uns dazu bitte deinen Spielernamen. Den lokalen Spielstand löschst du selbst, indem du die App löschst oder in den Einstellungen den Fortschritt zurücksetzt. Kontakt: <a href="mailto:kevinramel190@gmail.com">kevinramel190@gmail.com</a>.</p>
+
+  <h2>8. Änderungen</h2>
+  <p>Diese Erklärung kann angepasst werden, wenn sich die App ändert. Die aktuelle Fassung ist immer unter dieser Adresse abrufbar.</p>
+
+  <section class="en" id="english">
+    <h1>Privacy Policy <span>Velumen</span></h1>
+    <p class="tag">Last updated: September 2026 · Applies to the iOS app “Velumen”</p>
+    <h2>Who we are</h2>
+    <p>App provider: Kevin Ramel, Switzerland. Contact: <a href="mailto:kevinramel190@gmail.com">kevinramel190@gmail.com</a>.</p>
+    <h2>In short</h2>
+    <ul>
+      <li>Velumen needs no account, no e-mail address and no real name.</li>
+      <li>The app contains no ads and no tracking; no advertising identifiers are used and nothing is shared with ad networks.</li>
+      <li>Your save game is stored on your device.</li>
+      <li>Leaderboards and Cloud Sync use an anonymous, randomly generated user ID that cannot be linked to a person.</li>
+    </ul>
+    <h2>What we process</h2>
+    <ul>
+      <li><strong>Save game</strong> (Lumen, skins, achievements, settings, player name) – stored only on your device until you delete the app.</li>
+      <li><strong>Anonymous user ID</strong> – created by Firebase Authentication so that only you can update your own leaderboard entry.</li>
+      <li><strong>Leaderboard entry</strong> (chosen player name, depth reached, timestamp) – stored in Cloud Firestore (Google), data centre Zurich, Switzerland; boards reset weekly / daily.</li>
+      <li><strong>Cloud Sync code with save data</strong> – only when you create a code yourself; valid for 10 minutes, then unusable; entries are deleted periodically.</li>
+      <li><strong>In-app purchases</strong> – handled entirely by Apple; the app only receives the purchase confirmation, never payment details.</li>
+    </ul>
+    <p>When online features are used, your device technically transmits its IP address to Google (Firebase), used solely to provide the service and prevent abuse.</p>
+    <h2>Service providers</h2>
+    <p>Google Ireland Ltd. (Firebase Authentication, Cloud Firestore – <a href="https://firebase.google.com/support/privacy" rel="noopener">privacy</a>) and Apple Inc. (App Store, in-app purchases – <a href="https://www.apple.com/legal/privacy/" rel="noopener">privacy</a>).</p>
+    <h2>Legal basis</h2>
+    <p>Processing is necessary to provide the game and its online features (Swiss Data Protection Act; Art. 6(1)(b) GDPR where applicable). Online features are optional; the game also works offline.</p>
+    <h2>Children</h2>
+    <p>Velumen is not directed at children under 13 and does not knowingly collect personal data from children. Player names are chosen by the player; please do not use a real name.</p>
+    <h2>Your rights</h2>
+    <p>You may request access to, correction or deletion of the data stored under your anonymous user ID. Because we cannot identify you, please include your player name. Delete your local save by deleting the app or resetting progress in the settings. Contact: <a href="mailto:kevinramel190@gmail.com">kevinramel190@gmail.com</a>.</p>
+  </section>
+</main>
+</body>
+</html>
