@@ -1,7 +1,3 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-<meta charset="utf-8">
 <title>Velumen</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -41,13 +37,9 @@
     color:var(--ink);
     font-family:'Chakra Petch',system-ui,sans-serif;
     -webkit-tap-highlight-color:transparent;
-    -webkit-touch-callout:none; /* no long-press magnifier / callout on iOS when a tap lingers */
-    -webkit-user-select:none;
-    user-select:none;
     position:fixed;
     width:100%;
   }
-  input, textarea, .lumen-code-out{ -webkit-user-select:text; user-select:text; }
 
   #game{
     position:fixed;
@@ -130,9 +122,6 @@
     padding:20px;
     overflow-y:auto; /* a tall card (lots of legend/menu rows) scrolls into view on short screens
                          instead of clipping off the top with no way to reach it */
-    touch-action:pan-y; /* finger-scrolling allowed here (the canvas underneath stays touch-action:none);
-                           pan-y also suppresses iOS double-tap zoom on buttons */
-    -webkit-overflow-scrolling:touch;
   }
 
   .overlay[hidden]{ display:none; }
@@ -506,11 +495,6 @@
     cursor:pointer;
     pointer-events:auto;
     flex-shrink:0;
-  }
-  /* touch screens: Apple's 44pt minimum tap target — the pause/settings buttons were 26px, easy to miss */
-  @media (pointer:coarse){
-    .icon-btn{ width:40px; height:40px; font-size:16px; }
-    .gear-fab{ width:44px; height:44px; font-size:18px; }
   }
   .icon-btn:hover{ color:var(--ink); border-color:rgba(255,255,255,0.32); }
   .icon-btn:active{ transform:scale(0.92); }
@@ -1348,8 +1332,7 @@
 <div class="overlay" id="wheelOverlay" hidden>
   <div class="card">
     <h1 id="wheelTitle" style="margin-bottom:4px;">Current Wheel</h1>
-    <p class="sub" id="wheelSub" style="margin-bottom:6px;">One free spin a day. Every further spin costs 500 Lumen.</p>
-    <p class="sub" id="wheelOdds" style="margin-bottom:10px; font-size:10px; opacity:0.8;"></p>
+    <p class="sub" id="wheelSub" style="margin-bottom:10px;">One free spin a day. Every further spin costs 500 Lumen.</p>
     <div class="wheel-wrap"><canvas id="wheelCanvas" width="340" height="360"></canvas></div>
     <div class="wheel-result" id="wheelResult"></div>
     <div class="wheel-hint" id="wheelHint"></div>
@@ -1599,14 +1582,6 @@
       }
     }
   } catch (e) { /* storage unavailable; shop still works for the session */ }
-  // First launch ever: follow the device language (German devices start in German); after that the
-  // player's own choice in the settings wins.
-  if (!storedProfile){
-    try {
-      var devLang = String((navigator.languages && navigator.languages[0]) || navigator.language || '');
-      if (/^de/i.test(devLang)) profile.language = 'de';
-    } catch (e) {}
-  }
   if (!profile.playerId) profile.playerId = 'p_' + Math.random().toString(36).slice(2,10) + Date.now().toString(36);
   if (!profile.playerTag){
     var legacyTag = (profile.playerName && !profile.nameLocked) ? (String(profile.playerName).match(/^(?:Diver|Taucher|Player|Spieler)#?(\d{4})$/) || [])[1] : null;
@@ -2106,7 +2081,6 @@
     loginBonusHint: { en:'Daily bonus — it grows with every day in a row (up to 30)', de:'Täglicher Bonus — er wächst mit jedem Tag in Folge (bis 30)' },
     loginBonusClaimBtn: { en:'Accept bonus', de:'Bonus annehmen' },
     wheelSub: { en:'One free spin a day. Every further spin costs 500 Lumen.', de:'Einmal am Tag gratis drehen. Jeder weitere Dreh kostet 500 Lumen.' },
-    wheelOdds: { en:'Odds per spin: 25 Lumen 25% · 50 Lumen 20% · 15 Lumen 15% · +1 Life 10% · 100 Lumen 10% · ×2 Daily Dive 10% · 250 Lumen 7% · Jackpot 1000 3%', de:'Chancen pro Dreh: 25 Lumen 25 % · 50 Lumen 20 % · 15 Lumen 15 % · +1 Leben 10 % · 100 Lumen 10 % · ×2 Tagestauchgang 10 % · 250 Lumen 7 % · Jackpot 1000 3 %' },
     wheelCardReady: { en:'Free spin ready!', de:'Gratis-Dreh bereit!' },
     wheelCardSpent: { en:'Spun today · 500 ✦ per extra spin', de:'Heute gedreht · 500 ✦ pro weiterem Dreh' },
     wheelSpinFree: { en:'Spin for free', de:'Gratis drehen' },
@@ -2995,8 +2969,8 @@
   var LUMEN_TIERS = [
     { id:'t2',  priceLabel:'2 €',  amount:2000 },
     { id:'t5',  priceLabel:'5 €',  amount:5000 },
-    { id:'t10', priceLabel:'10 €', amount:12000, bonus:true },
-    { id:'t20', priceLabel:'20 €', amount:25000, bonus:true }
+    { id:'t10', priceLabel:'10 €', amount:15000, bonus:true },
+    { id:'t20', priceLabel:'20 €', amount:30000, bonus:true }
   ];
   function lumenTierById(id){
     for (var i=0;i<LUMEN_TIERS.length;i++) if (LUMEN_TIERS[i].id===id) return LUMEN_TIERS[i];
@@ -3279,8 +3253,8 @@
   var IAP_PRODUCTS = [
     { tierId:'t2',  productId:'com.velumen.game.lumen2000' },
     { tierId:'t5',  productId:'com.velumen.game.lumen5000' },
-    { tierId:'t10', productId:'com.velumen.game.lumen12000' },
-    { tierId:'t20', productId:'com.velumen.game.lumen25000' }
+    { tierId:'t10', productId:'com.velumen.game.lumen15000' },
+    { tierId:'t20', productId:'com.velumen.game.lumen30000' }
   ];
   var iapReady = false, iapStatusMsg = '';
   function nativeIapAvailable(){ return isNativeShell() && !!window.CdvPurchase; }
@@ -3352,10 +3326,9 @@
     panel.appendChild(statusLine);
     var hint = document.createElement('div'); hint.className = 'lumen-hint'; hint.textContent = t('iapHint');
     panel.appendChild(hint);
-    var restoreBtn = document.createElement('button'); restoreBtn.type = 'button'; restoreBtn.className = 'secondary'; restoreBtn.style.marginTop = '12px';
-    restoreBtn.textContent = t('iapRestore');
-    restoreBtn.addEventListener('click', function(){ sfxClick(); iapStatusMsg = t('iapRestoring'); renderShop(); store.restorePurchases().then(function(){ iapStatusMsg = t('iapRestored'); renderShop(); }); });
-    panel.appendChild(restoreBtn);
+    // v1.0 Build 7: "Kaeufe wiederherstellen" entfernt. Alle vier Lumen-Pakete sind
+    // Verbrauchsartikel, und die lassen sich per StoreKit nicht wiederherstellen — Apple hat den
+    // Knopf deshalb beanstandet (Richtlinie 3.1.1, Ablehnung vom 20.09.2026).
     grid.appendChild(panel);
   }
 
@@ -4811,7 +4784,6 @@
     var btn = document.getElementById('wheelSpinBtn'), hint = document.getElementById('wheelHint');
     document.getElementById('wheelTitle').textContent = t('wheelTitle');
     document.getElementById('wheelSub').textContent = t('wheelSub');
-    var oddsEl = document.getElementById('wheelOdds'); if (oddsEl) oddsEl.textContent = t('wheelOdds');
     document.getElementById('wheelBackBtn').textContent = t('back');
     if (wheel.spinning){ btn.textContent = t('wheelSpinning'); btn.disabled = true; hint.textContent = ''; return; }
     btn.textContent = free ? t('wheelSpinFree') : t('wheelSpinPaid');
@@ -5773,12 +5745,7 @@
   // the surrounding page and drag it up or down while playing (swiping near the top edge in
   // particular is exactly what a browser reads as pull-to-refresh / toolbar-reveal, so touchstart
   // has to be non-passive too, not just touchmove)
-  // Every overlay (start page, shop, settings, game over, ...) and the HUD are native-touch territory:
-  // overlays are their own scroll containers, so a swipe anywhere on them (not just on a button or a
-  // list) scrolls the card, and a tap on anything inside gets the browser's own synthesized click —
-  // on iOS a preventDefault()'d touchstart would otherwise swallow both. The bare canvas keeps its
-  // swallow-everything behaviour for gameplay.
-  var NATIVE_TOUCH_SELECTOR = '.overlay, .hud, .shop-card, .briefing-list, #achievementList, #bestiaryList, button, a, input, select, textarea, label';
+  var NATIVE_TOUCH_SELECTOR = '.shop-card, .briefing-list, #achievementList, #bestiaryList, button, a, input, select, textarea, label';
   function isNativeTouchTarget(target){
     return !!(target && target.closest && target.closest(NATIVE_TOUCH_SELECTOR));
   }
@@ -5977,8 +5944,7 @@
     // as the player drifts away from the touch's start position, this term drags backward against
     // the joystick's own push and makes the player feel sluggish)
     var sensMul = profile.controlSensitivity || 1;
-    var modeSpeedMul = (gameMode === 'endless') ? 0.9 : 1; // Endless: the player moves 10% slower (by design)
-    var effSpeedMul = PLAYER_SPEED_MUL * sensMul * modeSpeedMul * timeAttackSpeedMul() * skinSpeedMul() * deepCalmSpeedMul();
+    var effSpeedMul = PLAYER_SPEED_MUL * sensMul * timeAttackSpeedMul() * skinSpeedMul() * deepCalmSpeedMul();
     var followStrength = 9 * effSpeedMul * (boosterEquipped('tailwind') ? (1 + 0.25 * boosterPower('tailwind')) : 1);
     var ax = joystick.active ? 0 : (pointer.x - player.x) * followStrength;
     var ay = joystick.active ? 0 : (pointer.y - player.y) * followStrength;
